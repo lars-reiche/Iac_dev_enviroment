@@ -1,0 +1,62 @@
+---
+- name: Install Python and other tools on Windows
+  hosts: localhost
+  become: no
+  gather_facts: yes
+  tasks:
+    - name: Install Chocolatey (Windows package manager)
+      win_chocolatey:
+        name: chocolatey
+        state: present
+
+    - name: Install Python using Chocolatey
+      win_chocolatey:
+        name: python
+        version: 3.12.0
+        state: present
+      tags: python
+
+    - name: Install Git using Chocolatey
+      win_chocolatey:
+        name: git
+        version: 2.45.2
+        state: present
+      tags: git
+
+    - name: Install Visual Studio Code using Chocolatey
+      win_chocolatey:
+        name: vscode
+        state: present
+      tags: vscode
+
+    - name: Install Azure Storage Explorer using Chocolatey
+      win_chocolatey:
+        name: azure-storage-explorer
+        state: present
+      tags: azurestorage
+
+    - name: Install Miro using Chocolatey
+      win_chocolatey:
+        name: miro
+        state: present
+      tags: miro
+
+    - name: Install Prettier extension for VS Code
+      win_shell: code --install-extension esbenp.prettier-vscode
+      args:
+        creates: "{{ ansible_env.USERPROFILE }}/.vscode/extensions/esbenp.prettier-vscode"
+
+    - name: Install Python extension for VS Code
+      win_shell: code --install-extension ms-python.python
+      args:
+        creates: "{{ ansible_env.USERPROFILE }}/.vscode/extensions/ms-python.python"
+
+    - name: Install Bicep extension for VS Code
+      win_shell: code --install-extension ms-azuretools.vscode-bicep
+      args:
+        creates: "{{ ansible_env.USERPROFILE }}/.vscode/extensions/ms-azuretools.vscode-bicep"
+
+    - name: Install Prompt Flow extension for VS Code
+      win_shell: code --install-extension devhawk.promptflow
+      args:
+        creates: "{{ ansible_env.USERPROFILE }}/.vscode/extensions/devhawk.promptflow"

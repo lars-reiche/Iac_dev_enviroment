@@ -1,0 +1,71 @@
+---
+- name: Install Python on macOS
+  hosts: localhost
+  become: no
+  gather_facts: yes
+  tasks:
+    - name: Ensure Homebrew is installed
+      command: /bin/bash -c "$(curl -fsSL https://raw.githubusercontent.com/Homebrew/install/HEAD/install.sh)"
+      args:
+        creates: /usr/local/bin/brew
+
+    - name: Tap homebrew/cask
+      homebrew_tap:
+        name: homebrew/cask
+        state: present
+      become: no
+
+    - name: Install Python using Homebrew
+      homebrew:
+        name: python@3.12
+        state: present
+      tags: python
+
+    - name: Install Git
+      homebrew:
+        name: git
+        state: present
+        install_options: "--force --version=2.45.2"
+      tags: git
+
+    - name: Install Visual Studio Code
+      homebrew_cask:
+        name: visual-studio-code
+        state: present
+      become: no
+      tags: vscode
+
+    - name: Install Azure Storage Explorer
+      homebrew_cask:
+        name: microsoft-azure-storage-explorer
+        state: present
+      become: no
+      tags: azurestorage
+
+    - name: Install Miro
+      homebrew_cask:
+        name: miro
+        state: present
+      become: no
+      tags: miro
+
+    - name: Install Prettier extension for VS Code
+      shell: code --install-extension esbenp.prettier-vscode
+      args:
+        creates: ~/.vscode/extensions/esbenp.prettier-vscode
+
+    - name: Install Python extension for VS Code
+      shell: code --install-extension ms-python.python
+      args:
+        creates: ~/.vscode/extensions/ms-python.python
+
+    - name: Install Bicep extension for VS Code
+      shell: code --install-extension ms-azuretools.vscode-bicep
+      args:
+        creates: ~/.vscode/extensions/ms-azuretools.vscode-bicep
+
+    - name: Install Prompt Flow extension for VS Code
+      shell: code --install-extension devhawk.promptflow
+      args:
+        creates: ~/.vscode/extensions/devhawk.promptflow
+
