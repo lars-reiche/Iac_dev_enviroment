@@ -7,7 +7,7 @@ Introduction
 1. [MacOS](#macos)
 2. [Windows](#windows)
 3. [Docker](#docker)
-4. [Individual Setup](#individual)
+4. [Customization](#customization)
 
 ## Installations
 1. Python 3.12
@@ -48,6 +48,7 @@ Introduction
         ```shell
         ansible-playbook -i "your-user", --user "your-user" macos_playbook.yml -K
         ```
+4. [Individual Setup](#customization)
 
 ## Windows
 ...
