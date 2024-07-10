@@ -1,6 +1,8 @@
 # IaC to setup dev_enviroment
 
-Introduction
+To ensure a standardized and scalable provision of our development environment, we use the principles of Infrastructure as Code (IaC). We rely specifically on Ansible.
+
+Ansible enables us to define our infrastructure in code and ensure that the desired configurations and states are consistent and reproducible. It is based on the desired end state, which means that the previously defined end state is aimed for and achieved by executing the Ansible code. This greatly simplifies the management and automation of complex environments and ensures that all systems have exactly the configuration we need.
 
 ## Table of Content
 1. [Installations](#installations)
