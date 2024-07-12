@@ -1,0 +1,14 @@
+{
+  "name": "ki-cc devcontainers",
+  "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
+  "extensions": [
+    "ms-azuretools.vscode-bicep",
+    "prompt-flow.prompt-flow",
+    "esbenp.prettier-vscode",
+    "ms-python.python"
+  ],
+  "postCreateCommand": "sudo apt-get update && sudo apt-get install -y git python3.12 && pip install -r /workspace/requirements.txt",
+  "settings": {
+    "python.pythonPath": "/usr/bin/python3.12"
+  }
+}
