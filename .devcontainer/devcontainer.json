@@ -1,14 +1,18 @@
 {
   "name": "ki-cc devcontainers",
-  "image": "mcr.microsoft.com/devcontainers/base:ubuntu",
-  "extensions": [
-    "ms-azuretools.vscode-bicep",
-    "prompt-flow.prompt-flow",
-    "esbenp.prettier-vscode",
-    "ms-python.python"
-  ],
-  "postCreateCommand": "sudo apt update && sudo apt install python3.11 && pip install -r /workspace/requirements.txt",
-  "settings": {
-    "python.pythonPath": "/usr/bin/python3.11"
-  }
+  "build": { "dockerfile": "Dockerfile" },
+  "customizations": {
+		"vscode": {
+			"settings": {
+        		"python.pythonPath": "/usr/bin/python3.11"
+			},
+			"extensions": [
+				"ms-azuretools.vscode-bicep",
+				"prompt-flow.prompt-flow",
+				"esbenp.prettier-vscode",
+				"ms-python.python"
+			]
+		}
+	},
+  "postCreateCommand": "sudo apt update && sudo apt install python3.11 && pip install -r /workspace/requirements.txt"
 }
