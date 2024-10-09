@@ -1,6 +1,7 @@
 {
   "name": "ki-cc devcontainers",
   "image": "mcr.microsoft.com/devcontainers/python:1-3.12-bullseye",
+  "postCreateCommand": "curl -sL https://aka.ms/InstallAzureCLIDeb | sudo bash" ,
   "customizations": {
 		"vscode": {
 			"settings": {
@@ -14,5 +15,5 @@
 			]
 		}
 	}
-	// "remoteUser": "root"
+	//"remoteUser": "root"
 }
